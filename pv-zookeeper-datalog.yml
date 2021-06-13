@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    pv.kubernetes.io/provisioned-by: rancher.io/local-path
+  finalizers:
+  - kubernetes.io/pv-protection
+  name: pvc-e43ef754-6cda-4bb9-8e24-9e3ec658faf5
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 5Gi
+  claimRef:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    name: datalogdir-kafka-cp-zookeeper-0
+    namespace: kafka
+  hostPath:
+    path: /var/lib/rancher/k3s/storage/pvc-e43ef754-6cda-4bb9-8e24-9e3ec658faf5_kafka_datalogdir-kafka-cp-zookeeper-0
+    type: DirectoryOrCreate
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: local-path
+  volumeMode: Filesystem    
